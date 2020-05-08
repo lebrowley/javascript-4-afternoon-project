@@ -92,7 +92,7 @@ function Employee(name, email, hireDate) {
   }
   
   Movie.prototype.changeRating= function(num){
-    this.rating= (this.rating + num) / 2;
+    this.rating = (this.rating + num) / 2;
     return this.rating;
   }
   
@@ -130,21 +130,29 @@ function Employee(name, email, hireDate) {
   // You will be using the constructor function you just created in problem 5.
   // Write a prototype method for the User constructor function named removeSavedPost that will take in one number parameter representing the post id. Use this id to find and remove the matching object in the savedPosts array.
   
-  User.prototype.removeSavedPost = function(id){
-    if(id === this.savedPosts){
-
-
-      this.savedPosts.splice(id, 1);
-    }
-  }
   
-/* in this one, we're trying to take an id and see if it matches the id that is stored on the object that is inside of the array called savedPosts
-indexOF
+
+  User.prototype.removeSavedPost = function(id){
+      let index = this.savedPosts.indexOf(id)
+      this.savedPosts.splice(index, 1)
+      
+     }
+  
+  
+  
+/* in this one, we're trying to take an id and see if it matches the id that is stored on the object that is inside of the array called savedPosts. what we do is make the prototype constructor function called removeSavedPosts which equals a function with one parameter: id. in this function we are then going to find the index of the object that has the same id as the one we're passing in. we'll make that index value a variable called index so that we can use it to remove the object at the index that has the matching id. we use splice and tell it which index and to remove just one item */
 
   ////////// PROBLEM 7 //////////
   
   // You will continue to use the constructor function you created in problem 5.
   // Write a prototype method for the User constructor function named changePostRating that will take in two number parameters. The first will be an id (a number) and the second will be the new rating (a number). Use the id to find the matching object in the savedPosts array. Once you find the matching object, update it's rating score with the new rating parameter.
   
-  // Code here
+
+  User.prototype.changePostRating = function(id, newRating){
+   this.savedPosts.forEach(function(element){
+     if(element.id === id){
+       element.rating = newRating
+     }
+   })
+ }
   
